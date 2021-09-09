@@ -1,0 +1,78 @@
+{
+  "name": "<PROJECT_NAME>",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "ethereum",
+    "smart",
+    "contracts",
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<FOLDER>/<NAME>.git"
+  },
+  "files": [
+    "contracts/libraries",
+    "contracts/interfaces",
+    "artifacts/contracts/interfaces/**/*.json",
+    "artifacts/contracts/libraries/**/*.json",
+    "deployments",
+    "!deployments/localhost",
+    "!.env"
+  ],
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat deploy",
+    "sizer": "TEST=true hardhat compile && TEST=true npx hardhat size-contracts",
+    "coverage": "npx hardhat coverage",
+    "fork": "FORK=true npx hardhat node",
+    "fork:script": "FORK=true npx hardhat run",
+    "fork:test": "FORK=true npx hardhat test",
+    "lint:check": "solhint 'contracts/**/*.sol' 'interfaces/**/*.sol' && prettier --check './**'",
+    "lint:fix": "sort-package-json && prettier --write './**' && solhint --fix 'contracts/**/*.sol' 'interfaces/**/*.sol'",
+    "release": "standard-version",
+    "test": "TEST=true hardhat compile && TEST=true mocha",
+    "test:gas": "TEST=true REPORT_GAS=1 npx hardhat test",
+    "test:unit": "yarn test 'test/unit/**/*.spec.ts'",
+    "test:unit:parallel": "yarn test:parallel 'test/unit/**/*.spec.ts'",
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.2.0",
+    "@uniswap/v3-periphery": "1.1.1",
+    "base64-sol": "1.0.1"
+  },
+  "devDependencies": {
+    "@nomiclabs/ethereumjs-vm": "4.2.2",
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.10",
+    "@nomiclabs/hardhat-etherscan": "2.1.4",
+    "@nomiclabs/hardhat-waffle": "2.0.1",
+    "@types/chai": "4.2.21",
+    "@types/mocha": "9.0.0",
+    "@types/node": "16.4.8",
+    "chai": "4.3.4",
+    "chai-as-promised": "7.1.1",
+    "dotenv": "10.0.0",
+    "ethereum-waffle": "3.4.0",
+    "ethers": "5.4.3",
+    "hardhat": "2.5.0",
+    "hardhat-contract-sizer": "2.0.3",
+    "hardhat-deploy": "0.8.11",
+    "hardhat-gas-reporter": "1.0.4",
+    "hardhat-preprocessor": "0.1.4",
+    "prettier": "2.3.2",
+    "prettier-plugin-solidity": "1.0.0-beta.17",
+    "solhint": "3.3.6",
+    "solhint-plugin-prettier": "0.0.5",
+    "solidity-coverage": "0.7.16",
+    "sort-package-json": "1.50.0",
+    "standard-version": "9.3.1",
+    "ts-node": "10.1.0",
+    "typescript": "4.3.5"
+  },
+  "authors": [
+    {
+      "name": "Scott Nixon",
+      "url": "https://github.com/citadelgrad"
+    }
+  ]
+}
